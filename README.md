@@ -2,7 +2,7 @@
 
 Docker Compose stack with common development services, web UIs, monitoring, and a portal page — all pre-configured and ready to go.
 
-![portal](https://img.shields.io/badge/portal-localhost-blue)
+![Portal](docs/portal.png)
 
 ## Quick Start
 
