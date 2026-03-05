@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev Services</title>
+  <script src="/assets/tailwind.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face { font-family: 'Inter'; font-weight: 400; src: url('/assets/fonts/inter-400.ttf') format('truetype'); }
+    @font-face { font-family: 'Inter'; font-weight: 500; src: url('/assets/fonts/inter-500.ttf') format('truetype'); }
+    @font-face { font-family: 'Inter'; font-weight: 600; src: url('/assets/fonts/inter-600.ttf') format('truetype'); }
+    @font-face { font-family: 'Inter'; font-weight: 700; src: url('/assets/fonts/inter-700.ttf') format('truetype'); }
+    .card:hover { transform: translateY(-4px); }
+    .card { transition: all 0.2s ease; }
+    .status-dot { animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen">
+  <div class="max-w-6xl mx-auto px-6 py-10">
+
+    <!-- Web UIs -->
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Web Interfaces</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+
+      <a href="http://localhost:3000" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/5">
+        <div class="flex items-center gap-4">
+          <img src="/assets/icons/grafana.svg" alt="Grafana" class="w-10 h-10">
+          <div>
+            <div class="font-semibold">Grafana</div>
+            <div class="text-sm text-gray-500">Dashboards & Logs</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:3000</code>
+          <span class="text-xs text-gray-600">admin / admin</span>
+        </div>
+      </a>
+
+      <a href="http://localhost:3000/d/logs-explorer" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/5">
+        <div class="flex items-center gap-4">
+          <img src="/assets/icons/grafana.svg" alt="Loki" class="w-10 h-10">
+          <div>
+            <div class="font-semibold">Logs Explorer</div>
+            <div class="text-sm text-gray-500">Loki via Grafana</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:3000/d/logs-explorer</code>
+        </div>
+      </a>
+
+      <a href="http://localhost:5050" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/5">
+        <div class="flex items-center gap-4">
+          <img src="/assets/icons/postgresql.svg" alt="pgAdmin" class="w-10 h-10">
+          <div>
+            <div class="font-semibold">pgAdmin</div>
+            <div class="text-sm text-gray-500">PostgreSQL Management</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:5050</code>
+          <span class="text-xs text-gray-600">admin@example.com</span>
+        </div>
+      </a>
+
+      <a href="http://localhost:5540" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-red-500/50 hover:shadow-lg hover:shadow-red-500/5">
+        <div class="flex items-center gap-4">
+          <img src="/assets/icons/redis.svg" alt="Redis" class="w-10 h-10">
+          <div>
+            <div class="font-semibold">RedisInsight</div>
+            <div class="text-sm text-gray-500">Redis Management</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:5540</code>
+        </div>
+      </a>
+
+      <a href="http://localhost:15672" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-orange-400/50 hover:shadow-lg hover:shadow-orange-400/5">
+        <div class="flex items-center gap-4">
+          <img src="/assets/icons/rabbitmq.svg" alt="RabbitMQ" class="w-10 h-10">
+          <div>
+            <div class="font-semibold">RabbitMQ</div>
+            <div class="text-sm text-gray-500">Message Broker</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:15672</code>
+          <span class="text-xs text-gray-600">dev / dev</span>
+        </div>
+      </a>
+
+      <a href="http://localhost:8081" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5">
+        <div class="flex items-center gap-4">
+          <svg class="w-10 h-10 text-emerald-400" viewBox="0 0 24 24" fill="currentColor"><rect width="24" height="24" rx="6"/></svg>
+          <div>
+            <div class="font-semibold">Memcached Admin</div>
+            <div class="text-sm text-gray-500">Memcached Management</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:8081</code>
+        </div>
+      </a>
+
+      <a href="http://localhost:16686" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/5">
+        <div class="flex items-center gap-4">
+          <img src="/assets/icons/jaeger.svg" alt="Jaeger" class="w-10 h-10">
+          <div>
+            <div class="font-semibold">Jaeger</div>
+            <div class="text-sm text-gray-500">Distributed Tracing</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:16686</code>
+        </div>
+      </a>
+
+      <a href="http://localhost:9090" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-rose-500/50 hover:shadow-lg hover:shadow-rose-500/5">
+        <div class="flex items-center gap-4">
+          <img src="/assets/icons/prometheus.svg" alt="Prometheus" class="w-10 h-10">
+          <div>
+            <div class="font-semibold">Prometheus</div>
+            <div class="text-sm text-gray-500">Metrics & Monitoring</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:9090</code>
+        </div>
+      </a>
+
+      <a href="http://localhost:8222" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/5">
+        <div class="flex items-center gap-4">
+          <img src="/assets/icons/nats.svg" alt="NATS" class="w-10 h-10">
+          <div>
+            <div class="font-semibold">NATS</div>
+            <div class="text-sm text-gray-500">Monitoring Endpoint</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:8222</code>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Connection Endpoints -->
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Connection Endpoints</h2>
+    <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-gray-800 text-gray-500">
+            <th class="text-left px-5 py-3 font-medium">Service</th>
+            <th class="text-left px-5 py-3 font-medium">Host</th>
+            <th class="text-left px-5 py-3 font-medium">Port</th>
+            <th class="text-left px-5 py-3 font-medium">Credentials</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-800/50">
+          <tr class="hover:bg-gray-800/30">
+            <td class="px-5 py-3 flex items-center gap-2">
+              <img src="/assets/icons/postgresql.svg" class="w-4 h-4"> PostgreSQL
+            </td>
+            <td class="px-5 py-3"><code class="text-gray-400">localhost</code></td>
+            <td class="px-5 py-3"><code class="text-blue-400">5432</code></td>
+            <td class="px-5 py-3 text-gray-500">postgres / changeme</td>
+          </tr>
+          <tr class="hover:bg-gray-800/30">
+            <td class="px-5 py-3 flex items-center gap-2">
+              <img src="/assets/icons/redis.svg" class="w-4 h-4"> Redis
+            </td>
+            <td class="px-5 py-3"><code class="text-gray-400">localhost</code></td>
+            <td class="px-5 py-3"><code class="text-blue-400">6379</code></td>
+            <td class="px-5 py-3 text-gray-500">-</td>
+          </tr>
+          <tr class="hover:bg-gray-800/30">
+            <td class="px-5 py-3 flex items-center gap-2">
+              <svg class="w-4 h-4 text-green-400" viewBox="0 0 24 24" fill="currentColor"><rect width="24" height="24" rx="4"/></svg> Memcached
+            </td>
+            <td class="px-5 py-3"><code class="text-gray-400">localhost</code></td>
+            <td class="px-5 py-3"><code class="text-blue-400">11211</code></td>
+            <td class="px-5 py-3 text-gray-500">-</td>
+          </tr>
+          <tr class="hover:bg-gray-800/30">
+            <td class="px-5 py-3 flex items-center gap-2">
+              <img src="/assets/icons/rabbitmq.svg" class="w-4 h-4"> RabbitMQ
+            </td>
+            <td class="px-5 py-3"><code class="text-gray-400">localhost</code></td>
+            <td class="px-5 py-3"><code class="text-blue-400">5672</code></td>
+            <td class="px-5 py-3 text-gray-500">dev / dev</td>
+          </tr>
+          <tr class="hover:bg-gray-800/30">
+            <td class="px-5 py-3 flex items-center gap-2">
+              <img src="/assets/icons/nats.svg" class="w-4 h-4"> NATS
+            </td>
+            <td class="px-5 py-3"><code class="text-gray-400">localhost</code></td>
+            <td class="px-5 py-3"><code class="text-blue-400">4222</code></td>
+            <td class="px-5 py-3 text-gray-500">-</td>
+          </tr>
+          <tr class="hover:bg-gray-800/30">
+            <td class="px-5 py-3 flex items-center gap-2">
+              <img src="/assets/icons/jaeger.svg" class="w-4 h-4"> Jaeger OTLP
+            </td>
+            <td class="px-5 py-3"><code class="text-gray-400">localhost</code></td>
+            <td class="px-5 py-3"><code class="text-blue-400">4317</code> / <code class="text-blue-400">4318</code></td>
+            <td class="px-5 py-3 text-gray-500">gRPC / HTTP</td>
+          </tr>
+          <tr class="hover:bg-gray-800/30">
+            <td class="px-5 py-3 flex items-center gap-2">
+              <img src="/assets/icons/grafana.svg" class="w-4 h-4"> Loki
+            </td>
+            <td class="px-5 py-3"><code class="text-gray-400">localhost</code></td>
+            <td class="px-5 py-3"><code class="text-blue-400">3100</code></td>
+            <td class="px-5 py-3 text-gray-500">HTTP push</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-8 text-center text-xs text-gray-700">
+      <code>docker compose up -d</code> &middot; <code>docker compose down</code> &middot; <code>docker compose ps</code>
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.card').forEach(card => {
+      const dot = document.createElement('span');
+      dot.className = 'inline-block w-2 h-2 rounded-full bg-gray-700 ml-auto';
+      card.querySelector('.flex').appendChild(dot);
+
+      fetch(card.href, { mode: 'no-cors', signal: AbortSignal.timeout(3000) })
+        .then(() => { dot.className = 'inline-block w-2 h-2 rounded-full bg-emerald-500 status-dot ml-auto'; })
+        .catch(() => { dot.className = 'inline-block w-2 h-2 rounded-full bg-red-500 ml-auto'; });
+    });
+  </script>
+</body>
+</html>

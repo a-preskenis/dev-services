@@ -1,0 +1,106 @@
+{
+  "id": null,
+  "uid": "logs-explorer",
+  "title": "Logs Explorer",
+  "tags": ["logs", "loki"],
+  "timezone": "browser",
+  "refresh": "10s",
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "templating": {
+    "list": [
+      {
+        "name": "app",
+        "type": "query",
+        "datasource": "Loki",
+        "query": "label_names()",
+        "current": {},
+        "refresh": 2,
+        "includeAll": true,
+        "multi": false,
+        "sort": 1
+      },
+      {
+        "name": "search",
+        "type": "textbox",
+        "current": {
+          "value": ""
+        },
+        "label": "Search"
+      },
+      {
+        "name": "level",
+        "type": "custom",
+        "current": {
+          "text": "All",
+          "value": ""
+        },
+        "options": [
+          { "text": "All", "value": "", "selected": true },
+          { "text": "Error", "value": "error", "selected": false },
+          { "text": "Warning", "value": "warn", "selected": false },
+          { "text": "Info", "value": "info", "selected": false },
+          { "text": "Debug", "value": "debug", "selected": false }
+        ],
+        "query": "",
+        "includeAll": false,
+        "multi": false
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Log Volume",
+      "type": "barchart",
+      "gridPos": { "h": 5, "w": 24, "x": 0, "y": 0 },
+      "datasource": "Loki",
+      "targets": [
+        {
+          "expr": "sum(count_over_time({job=~\".+\"} |~ \"(?i)$search\" [$__auto])) by (job)",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "tooltip": { "mode": "multi" },
+        "stacking": "normal"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "palette-classic" },
+          "custom": {
+            "fillOpacity": 80,
+            "lineWidth": 0,
+            "stacking": { "mode": "normal" }
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Logs",
+      "type": "logs",
+      "gridPos": { "h": 20, "w": 24, "x": 0, "y": 5 },
+      "datasource": "Loki",
+      "targets": [
+        {
+          "expr": "{job=~\".+\"} |~ \"(?i)$search\" | level=~\"(?i)${level:regex}.*\"",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "showTime": true,
+        "showLabels": true,
+        "showCommonLabels": false,
+        "wrapLogMessage": true,
+        "prettifyLogMessage": true,
+        "enableLogDetails": true,
+        "sortOrder": "Descending",
+        "dedupStrategy": "none"
+      }
+    }
+  ],
+  "schemaVersion": 39
+}
