@@ -36,7 +36,35 @@
     <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Web Interfaces</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
 
-      <a href="http://localhost:3000" target="_blank"
+      <a href="http://localhost:3130" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/5">
+        <div class="flex items-center gap-4">
+          <svg class="w-10 h-10 text-violet-400" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="12"/><text x="12" y="16" text-anchor="middle" font-size="14" fill="white">H</text></svg>
+          <div>
+            <div class="font-semibold">Happy Server</div>
+            <div class="text-sm text-gray-500">Sync Backend</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:3130</code>
+        </div>
+      </a>
+
+      <a href="http://localhost:3131" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-pink-500/50 hover:shadow-lg hover:shadow-pink-500/5">
+        <div class="flex items-center gap-4">
+          <svg class="w-10 h-10 text-pink-400" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="12"/><text x="12" y="16" text-anchor="middle" font-size="14" fill="white">A</text></svg>
+          <div>
+            <div class="font-semibold">Happy Web App</div>
+            <div class="text-sm text-gray-500">Browser UI for Happy</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:3131</code>
+        </div>
+      </a>
+
+      <a href="http://localhost:3132" target="_blank"
          class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/5">
         <div class="flex items-center gap-4">
           <img src="/assets/icons/grafana.svg" alt="Grafana" class="w-10 h-10">
@@ -46,12 +74,12 @@
           </div>
         </div>
         <div class="mt-3 flex items-center justify-between">
-          <code class="text-xs text-gray-600">:3000</code>
+          <code class="text-xs text-gray-600">:3132</code>
           <span class="text-xs text-gray-600">admin / admin</span>
         </div>
       </a>
 
-      <a href="http://localhost:3000/d/logs-explorer" target="_blank"
+      <a href="http://localhost:3132/d/logs-explorer" target="_blank"
          class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/5">
         <div class="flex items-center gap-4">
           <img src="/assets/icons/grafana.svg" alt="Loki" class="w-10 h-10">
@@ -61,7 +89,7 @@
           </div>
         </div>
         <div class="mt-3 flex items-center justify-between">
-          <code class="text-xs text-gray-600">:3000/d/logs-explorer</code>
+          <code class="text-xs text-gray-600">:3132/d/logs-explorer</code>
         </div>
       </a>
 
@@ -162,6 +190,21 @@
         </div>
         <div class="mt-3 flex items-center justify-between">
           <code class="text-xs text-gray-600">:8222</code>
+        </div>
+      </a>
+
+      <a href="http://localhost:9001" target="_blank"
+         class="card block bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-pink-500/50 hover:shadow-lg hover:shadow-pink-500/5">
+        <div class="flex items-center gap-4">
+          <img src="/assets/icons/minio.svg" alt="MinIO" class="w-10 h-10">
+          <div>
+            <div class="font-semibold">MinIO Console</div>
+            <div class="text-sm text-gray-500">S3 Object Storage</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <code class="text-xs text-gray-600">:9001</code>
+          <span class="text-xs text-gray-600">minioadmin / minioadmin</span>
         </div>
       </a>
 

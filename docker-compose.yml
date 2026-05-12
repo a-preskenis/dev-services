@@ -200,6 +200,75 @@ services:
       - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus_data:/prometheus
 
+  # ── MinIO (S3) ─────────────────────────────────────────────
+  minio:
+    image: minio/minio:latest
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  minio-init:
+    image: minio/mc:latest
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set local http://minio:9000 minioadmin minioadmin &&
+      mc mb --ignore-existing local/happy-server &&
+      mc anonymous set download local/happy-server
+      "
+    restart: "no"
+
+  # ── Happy Coder ────────────────────────────────────────────
+  happy-server:
+    image: happy-server:latest
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}"
+      REDIS_URL: "redis://redis:6379"
+      HANDY_MASTER_SECRET: "${HAPPY_MASTER_SECRET:-dev-master-secret-change-me}"
+      PORT: "3000"
+      S3_HOST: minio
+      S3_PORT: "9000"
+      S3_USE_SSL: "false"
+      S3_ACCESS_KEY: minioadmin
+      S3_SECRET_KEY: minioadmin
+      S3_BUCKET: happy-server
+      S3_PUBLIC_URL: "http://localhost:9000/happy-server"
+    ports:
+      - "3130:3000"
+    volumes:
+      - happy_data:/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+
+  happy-app:
+    image: happy-app:latest
+    restart: unless-stopped
+    ports:
+      - "3131:80"
+    depends_on:
+      - happy-server
+
   # ── Grafana ─────────────────────────────────────────────────
   grafana:
     image: grafana/grafana:latest
@@ -210,7 +279,7 @@ services:
       GF_AUTH_ANONYMOUS_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
     ports:
-      - "3000:3000"
+      - "3132:3000"
     volumes:
       - grafana_data:/var/lib/grafana
       - ./config/grafana/provisioning:/etc/grafana/provisioning:ro
@@ -229,4 +298,6 @@ volumes:
   jaeger_data:
   loki_data:
   prometheus_data:
+  minio_data:
+  happy_data:
   grafana_data:

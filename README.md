@@ -30,8 +30,9 @@ Open **http://localhost** — portal with links to all services.
 | UI | URL | Credentials |
 |----|-----|-------------|
 | **Portal** | http://localhost | — |
-| **Grafana** | http://localhost:3000 | `admin` / `admin` |
-| **Logs Explorer** | http://localhost:3000/d/logs-explorer | `admin` / `admin` |
+| **Happy Coder** | http://localhost:3130 | — |
+| **Grafana** | http://localhost:3132 | `admin` / `admin` |
+| **Logs Explorer** | http://localhost:3132/d/logs-explorer | `admin` / `admin` |
 | **pgAdmin** | http://localhost:5050 | see `.env` |
 | **RedisInsight** | http://localhost:5540 | — |
 | **Memcached Admin** | http://localhost:8081 | — |
@@ -39,6 +40,7 @@ Open **http://localhost** — portal with links to all services.
 | **Jaeger** | http://localhost:16686 | — |
 | **Prometheus** | http://localhost:9090 | — |
 | **NATS Monitoring** | http://localhost:8222 | — |
+| **MinIO Console** | http://localhost:9001 | `minioadmin` / `minioadmin` |
 
 ### Observability
 
